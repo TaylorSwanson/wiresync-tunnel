@@ -4,12 +4,11 @@ import os from "os";
 
 import axios from "axios";
 
-const host = `wolframblack.com:8080`
+const host = `wolframblack.com`
 const url = `http://${host}`;
 
 axios.post(`${url}/register`, {
   hostname: os.hostname()
 }).then(res => {
-  console.log(`Registered with host: ${url}/regster`);
   console.log(`Connectable at ${os.hostname()}.${host}`);
 }, err => { throw err });

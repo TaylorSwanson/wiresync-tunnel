@@ -1,7 +1,7 @@
 
 import express from "express";
 
-import { connector, register } from "../client/connector"
+import { register } from "../client/connector"
 
 
 const app = express();
@@ -15,19 +15,12 @@ app.get("/help", (req, res) => {
   res.status(200).send(`Connect to server via "<hostname>.wolframblack.com"`);
 });
 
-// Main proxy entrance
-app.get("/", (req, res) => {
-  // Tunnel here
-  const hostname = req.subdomains.join(".");
-
-  connector(hostname, req.socket);
-});
-
 app.post("/register", (req, res) => {
-  register(req.hostname, req.ip);
-  res.status(201).end();
+  const hostname = req.body.hostname;
+  register(hostname, req.ip, req.socket);
+  // res.status(201).end();
 });
 
 
-console.log("API running on 8080");
-app.listen(8080);
+console.log("API running on 80");
+app.listen(80);

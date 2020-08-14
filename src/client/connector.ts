@@ -2,6 +2,18 @@
 
 import net from "net";
 
-const socket = net.connect(22, "127.0.0.1", () => {
-  console.log(`Connected to port`)
-})
+const hosts = {}
+
+export function connector(hostname, socket: NodeJS.Socket) {
+  // Proxy requests to remote server
+  const proxySocket = net.connect(22, hosts[hostname], () => {
+    proxySocket.on("data", data => {
+      // Proxy straight through
+      socket.write(data);
+    })
+  })
+};
+
+export function register(hostname, ip) {
+  hosts[hostname] = ip;
+};

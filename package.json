@@ -4,11 +4,23 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "rm -rf ./dist && tsc && NODE_ENV=production node --enable-source-maps ./dist/api",
-    "dev": "rm -rf ./dist && tsc && NODE_ENV=dev node -r source-map-support/register ./dist/api | bunyan -o short",
+    "start": "rm -rf ./dist && tsc && NODE_ENV=production node --enable-source-maps ./dist/server",
+    "dev": "rm -rf ./dist && tsc && NODE_ENV=dev node -r source-map-support/register ./dist/server",
+    "start-client": "rm -rf ./dist && tsc && NODE_ENV=production node --enable-source-maps ./dist/client",
+    "dev-client": "rm -rf ./dist && tsc && NODE_ENV=dev node -r source-map-support/register ./dist/client",
     "build-ts": "rm -rf ./dist && tsc",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Taylor Swanson",
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "@types/express": "^4.17.7",
+    "@types/node": "^14.0.27",
+    "source-map-support": "^0.5.19"
+  },
+  "dependencies": {
+    "axios": "^0.19.2",
+    "body-parser": "^1.19.0",
+    "express": "^4.17.1"
+  }
 }

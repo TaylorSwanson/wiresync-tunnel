@@ -4,7 +4,7 @@ import os from "os";
 
 import axios from "axios";
 
-const host = `localhost:8080`
+const host = `wolframblack.com:8080`
 const url = `http://${host}`;
 
 axios.post(`${url}/register`, {

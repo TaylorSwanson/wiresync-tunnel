@@ -16,4 +16,5 @@ export function connector(hostname, socket: NodeJS.Socket) {
 
 export function register(hostname, ip) {
   hosts[hostname] = ip;
+  console.log(`Registered host ${hostname} to ${ip}`)
 };

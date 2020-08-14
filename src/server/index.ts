@@ -18,7 +18,7 @@ app.get("/help", (req, res) => {
 // Main proxy entrance
 app.get("/", (req, res) => {
   // Tunnel here
-  const hostname = req.subdomains[0];
+  const hostname = req.subdomains.join(".");
 
   connector(hostname, req.socket);
 });

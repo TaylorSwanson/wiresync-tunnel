@@ -8,18 +8,11 @@ const app = express();
 
 app.set("x-powered-by", false);
 app.use(express.json())
+app.use(require("./middlewares/loggerMiddleware"));
 
 
-app.get("/connect", (req, res) => {
-  console.log({
-    ip: req.ip,
-    method: req.method,
-    path: req.path,
-    query: req.query,
-    subdomains: req.subdomains
-  });
-
-
+app.get("/", (req, res) => {
+  res.status(200).end();
 });
 
 app.post("/register", (req, res) => {

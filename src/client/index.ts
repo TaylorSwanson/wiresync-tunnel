@@ -11,5 +11,5 @@ axios.post(`${url}/register`, {
   hostname: os.hostname()
 }).then(res => {
   console.log(`Registered with host: ${url}/regster`);
-  console.log(`Connectable at ${os.hostname()}.wiresync.app`);
+  console.log(`Connectable at ${os.hostname()}.${host}`);
 }, err => { throw err });
